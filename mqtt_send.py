@@ -12,8 +12,7 @@ import paho.mqtt.client as mqtt
 client_id = "baymax1@1NQ1E9"
 
 client = mqtt.Client(client_id=client_id)
-client.username_pw_set("mqtt", "YWMtIJDtIvEfEeu8fkf"
-                               "-kOMZXYRsAgdFB0jzldZaf0gApRFJUsnA65wR648SlZQt1taPAwMAAAF69unObgBPGgCNVACrGokw8DlJH8gP19D0s2uxPLBWux9weDkoyiiA2A")
+client.username_pw_set("mqtt", "YWMtIJDtIvEfEeu8fkf-kOMZXYRsAgdFB0jzldZaf0gApRFJUsnA65wR648SlZQt1taPAwMAAAF69unObgBPGgCNVACrGokw8DlJH8gP19D0s2uxPLBWux9weDkoyiiA2A")
 client.connect("mqtt-ejabberd-hsb.easemob.com", 2883, 60)
 
 print("event/" + str(time.time()))

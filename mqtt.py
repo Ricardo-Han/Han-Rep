@@ -8,10 +8,23 @@
 import os
 import sys
 import time
-
 import paho.mqtt.client as mqtt
 
-# The callback for when the client receives a CONNACK response from the server.
+
+#### 发送消息
+client_id = "baymax1@1NQ1E9"
+
+client = mqtt.Client(client_id=client_id)
+client.username_pw_set("mqtt", "YWMtIJDtIvEfEeu8fkf-kOMZXYRsAgdFB0jzldZaf0gApRFJUsnA65wR648SlZQt1taPAwMAAAF69unObgBPGgCNVACrGokw8DlJH8gP19D0s2uxPLBWux9weDkoyiiA2A")
+client.connect("mqtt-ejabberd-hsb.easemob.com", 2883, 60)
+
+client.publish("event/" + str(time.time()))
+
+
+
+
+#### 接受消息
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
 
@@ -22,6 +35,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     mess = (msg.topic+" ")
+    print(msg.topic)
     send_time = mess.split("/")[1]
     recive_time = time.time()
     if float(recive_time) - float(send_time) <= 2:
